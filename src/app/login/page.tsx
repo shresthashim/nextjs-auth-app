@@ -1,7 +1,16 @@
-import React from 'react';
+'use client';
+import React, {useState} from 'react';
 import Link from 'next/link';
-
+import axios from "axios";
+import {useRouter} from "next/router";
 const LoginPage = () => {
+
+
+    const [user, setUser] = useState({
+        email: "",
+        password: "",
+    });
+
     return (
         <div className="flex flex-col items-center justify-center min-h-screen py-2">
             <form className="max-w-md w-full">
@@ -10,6 +19,8 @@ const LoginPage = () => {
                         Email
                     </label>
                     <input
+                        value={user.email}
+                        onChange={(e) => setUser({...user, email: e.target.value})}
                         className="p-3 mt-2 w-full border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 text-black"
                         id="email"
                         type="text"
@@ -21,6 +32,8 @@ const LoginPage = () => {
                         Password
                     </label>
                     <input
+                        value={user.password}
+                        onChange={(e) => setUser({...user, password: e.target.value})}
                         className="p-3 mt-2 w-full border text-black border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
                         id="password"
                         type="password"
