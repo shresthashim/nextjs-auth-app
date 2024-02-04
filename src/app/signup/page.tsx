@@ -1,7 +1,22 @@
-import React from 'react';
-import Link from 'next/link';
+'use client';
 
+import React, {useState} from 'react';
+import Link from 'next/link';
+import axios from "axios";
+import {useRouter} from "next/router";
 const SignupPage = () => {
+    const [user, setUser] = useState({
+        fullName: "",
+        email: "",
+        password: "",
+    });
+
+    const onSignUp = async (e) => {
+
+
+    }
+
+
     return (
         <div className="flex flex-col items-center justify-center min-h-screen py-2">
             <form className="max-w-md w-full">
