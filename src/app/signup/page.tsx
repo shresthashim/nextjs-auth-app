@@ -11,7 +11,7 @@ const SignupPage = () => {
         password: "",
     });
 
-    const onSignUp = async (e) => {
+    const onSignUp = async () => {
 
 
     }
@@ -27,6 +27,8 @@ const SignupPage = () => {
                     <input
                         className="p-3 mt-2 w-full border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
                         id="fullName"
+                        value={user.fullName}
+                        onChange={(e) => setUser({...user, fullName: e.target.value})}
                         type="text"
                         placeholder="Enter your full name"
                     />
@@ -36,6 +38,8 @@ const SignupPage = () => {
                         Email
                     </label>
                     <input
+                        value={user.email}
+                        onChange={(e) => setUser({...user, email: e.target.value})}
                         className="p-3 mt-2 w-full border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
                         id="email"
                         type="text"
@@ -47,6 +51,8 @@ const SignupPage = () => {
                         Password
                     </label>
                     <input
+                        value={user.password}
+                        onChange={(e) => setUser({...user, password: e.target.value})}
                         className="p-3 mt-2 w-full border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
                         id="password"
                         type="password"
