@@ -3,7 +3,7 @@
 import React, {useEffect, useState} from 'react';
 import Link from 'next/link';
 import axios from "axios";
-import {useRouter} from "next/router";
+import {useRouter} from "next/navigation";
 
 const SignupPage = () => {
     const router = useRouter();
@@ -75,7 +75,7 @@ const SignupPage = () => {
                     type="submit"
                     className="w-full bg-blue-500 text-white p-3 rounded-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue"
                 >
-                    Sign Up
+                    {buttonDisabled ? "Please fill all fields" : "Sign Up"}
                 </button>
             </form>
             <p className="mt-4">
