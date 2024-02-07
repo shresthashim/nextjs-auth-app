@@ -5,27 +5,46 @@ import {NextRequest, NextResponse} from "next/server";
 import bcryptjs from "bcryptjs";
 
 
-connect();
+connect()
+
 
 export async function POST(request: NextRequest) {
-    const {fullname, email, password} = await request.json();
     try {
-        //Check if user already exists
-       const user =  await User.findOne({email})
-         if(user) {
-              return NextResponse.json({error: "User already exists"}, {status: 400});
+        const reqBody = await request.json()
+        const {username, email, password} = reqBody
 
-            }
-        //Hash password
-        const salt = await bcryptjs.genSalt(10);
-        const hashedPassword = await bcryptjs.hash(password, salt);
+        console.log(reqBody);
 
-       const newUser =  new User({fullname, email, password: hashedPassword});
-       const savedUser =  await newUser.save();
+        //check if user already exists
+        const user = await User.findOne({email})
 
-         return NextResponse.json({message: "User created successfully"}, {status: 201});
+        if (user) {
+            return NextResponse.json({error: "User already exists"}, {status: 400})
+        }
 
-    } catch (error : any) {
-        return NextResponse.json({error: error.message}, {status: 500});
+        //hash password
+        const salt = await bcryptjs.genSalt(10)
+        const hashedPassword = await bcryptjs.hash(password, salt)
+
+        const newUser = new User({
+            username,
+            email,
+            password: hashedPassword
+        })
+
+        const savedUser = await newUser.save()
+        console.log(savedUser);
+
+
+        return NextResponse.json({
+            message: "User created successfully",
+            success: true,
+            savedUser
+        })
+
+
+    } catch (error: any) {
+        return NextResponse.json({error: error.message}, {status: 500})
+
     }
 }
