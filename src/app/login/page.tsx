@@ -6,7 +6,6 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
-    const router = useRouter();
 
     const [user, setUser] = useState({
         email: "",
@@ -21,6 +20,7 @@ const LoginPage = () => {
                 <div className="mb-6">
                     <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">Email</label>
                     <input
+                        autoComplete={'email'}
                         value={user.email}
                         onChange={(e) => setUser({...user, email: e.target.value})}
                         className="w-full text-balck px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
@@ -32,6 +32,7 @@ const LoginPage = () => {
                 <div className="mb-6">
                     <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2">Password</label>
                     <input
+                        autoComplete={'password'}
                         value={user.password}
                         onChange={(e) => setUser({...user, password: e.target.value})}
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
@@ -48,7 +49,7 @@ const LoginPage = () => {
                 </button>
             </form>
             <p className="text-sm">
-                Don't have an account?{' '}
+                Don&apos; have an account?{' '}
                 <Link href="/signup" className="text-blue-500 hover:underline">Sign up here</Link>
             </p>
         </div>

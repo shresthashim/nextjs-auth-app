@@ -17,7 +17,7 @@ export default function SignupPage() {
     const [loading, setLoading] = React.useState(false);
 
     const onSignup = async (e: any) => {
-        e.preventDefault(); // Prevent the default form submission behavior
+        e.preventDefault();
         try {
             setLoading(true);
             const response = await axios.post("/api/users/signup", user);
@@ -46,6 +46,7 @@ export default function SignupPage() {
                 <div className="mb-4">
                     <label htmlFor="username" className="block text-gray-700 text-sm font-bold mb-2">Username</label>
                     <input
+                        autoComplete={"username"}
                         className="p-2 text-black border border-gray-300 rounded-lg focus:outline-none focus:border-gray-600 w-full"
                         id="username"
                         type="text"
@@ -57,6 +58,7 @@ export default function SignupPage() {
                 <div className="mb-4">
                     <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">Email</label>
                     <input
+                        autoComplete={"email"}
                         className="p-2 text-black border border-gray-300 rounded-lg focus:outline-none focus:border-gray-600 w-full"
                         id="email"
                         type="text"
@@ -68,6 +70,7 @@ export default function SignupPage() {
                 <div className="mb-6">
                     <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2">Password</label>
                     <input
+                        autoComplete={"password"}
                         className="p-2 text-black  border border-gray-300 rounded-lg focus:outline-none focus:border-gray-600 w-full"
                         id="password"
                         type="password"
@@ -79,7 +82,7 @@ export default function SignupPage() {
                 <button
                     type="submit"
                     disabled={buttonDisabled}
-                    className="bg-blue-500 text-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    className="bg-blue-500  hover:bg-blue-700  font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 >
                     {loading ? "Processing" : "Signup"}
                 </button>
