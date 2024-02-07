@@ -1,10 +1,10 @@
 'use client';
 
 import Link from "next/link";
-import React, { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import React, {useEffect} from "react";
+import {useRouter} from "next/navigation";
 import axios from "axios";
-import { toast } from "react-hot-toast";
+import {toast} from "react-hot-toast";
 
 export default function SignupPage() {
     const router = useRouter();
@@ -50,18 +50,18 @@ export default function SignupPage() {
                         id="username"
                         type="text"
                         value={user.username}
-                        onChange={(e) => setUser({ ...user, username: e.target.value })}
+                        onChange={(e) => setUser({...user, username: e.target.value})}
                         placeholder="Username"
                     />
                 </div>
                 <div className="mb-4">
                     <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">Email</label>
                     <input
-                        className="p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-600 w-full"
+                        className="p-2 text-black border border-gray-300 rounded-lg focus:outline-none focus:border-gray-600 w-full"
                         id="email"
                         type="text"
                         value={user.email}
-                        onChange={(e) => setUser({ ...user, email: e.target.value })}
+                        onChange={(e) => setUser({...user, email: e.target.value})}
                         placeholder="Email"
                     />
                 </div>
@@ -72,7 +72,7 @@ export default function SignupPage() {
                         id="password"
                         type="password"
                         value={user.password}
-                        onChange={(e) => setUser({ ...user, password: e.target.value })}
+                        onChange={(e) => setUser({...user, password: e.target.value})}
                         placeholder="Password"
                     />
                 </div>
