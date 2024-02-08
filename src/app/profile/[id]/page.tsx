@@ -34,7 +34,7 @@ const UserProfile = ({ params }: any) => {
                             <div className="h-6 bg-gray-200 rounded w-5/6"></div>
                         </div>
                     ) : (
-                        <div className="mt-4 text-gray-600">
+                        <div className="mt-4 text-lg text-gray-900">
                             <p><strong>Name:</strong> {user.username}</p>
                             <p><strong>Email:</strong> {user.email}</p>
                             <p><strong>Admin Status:</strong> {user.isAdmin ? "Yes" : "No"}</p>
