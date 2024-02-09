@@ -1,10 +1,10 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import Link from "next/link";
 import axios from "axios";
 
-const UserProfile = ({ params }: any) => {
-    const [user, setUser] = useState({ username: "", email: "", isAdmin: false });
+const UserProfile = ({params}: any) => {
+    const [user, setUser] = useState({username: "", email: "", isAdmin: false});
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
