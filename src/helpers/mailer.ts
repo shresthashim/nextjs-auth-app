@@ -2,7 +2,7 @@ import nodemailer from 'nodemailer';
 import User from "@/models/userModel";
 import bcryptjs from "bcryptjs";
 
-export const sendMail = async ({ email, emailType, userId }: any) => {
+export const sendMail = async ({email, emailType, userId}: any) => {
     try {
         const hashedToken = await bcryptjs.hash(userId, 10);
 
@@ -24,13 +24,22 @@ export const sendMail = async ({ email, emailType, userId }: any) => {
             port: 2525,
             auth:
                 {
-                user: process.env.NODEMAILER_USER,
-                pass: process.env.NODEMAILER_PASS
-            }
+                    user: process.env.NODEMAILER_USER,
+                    pass: process.env.NODEMAILER_PASS
+                }
 
         });
+        const mailOptions = {
 
-    } catch (error : any) {
+            from: "ashimstha5155@gmail.com",
+            to: email,
+            subject: emailType === "VERIFY" ? "Verify your email" : "Reset your password",
+            html: `<p> Click <a href="${process.env.DOMAIN}/verifyemail?token=${hashedToken}">here</a> to ${emailType === "VERIFY" ? "verify your email" : "reset your password"}</p>`
+
+
+        }
+
+    } catch (error: any) {
         throw new Error(error.message);
     }
 }
