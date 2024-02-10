@@ -20,7 +20,6 @@ const LoginPage = () => {
             router.push("/profile");
 
         } catch (e: any) {
-            console.log(e);
             toast.error(e.message);
         }
 
